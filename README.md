@@ -1,1 +1,0 @@
-# griggsgd.github.io
