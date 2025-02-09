@@ -368,10 +368,12 @@
                         raindrops.splice(index, 1);
                     }
                 }
-
+                
                 draw(ctx) {
+                    this.color = `rgba(0, ${this.greenValue}, 0, ${this.opacity})`;
+                    
                     ctx.font = `${this.size}px ${customFont}`;
-                    ctx.fillStyle = this.color.replace(/, 1\)/, `, ${this.opacity})`);
+                    ctx.fillStyle = this.color;
                     ctx.fillText(this.char, this.x, this.y);
                 }
             }
