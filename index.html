@@ -240,7 +240,7 @@
 
             typedText.innerHTML = "";
             typeEffect();
-
+            //BG Effect
             const canvas = document.getElementById("backgroundCanvas");
             const ctx = canvas.getContext("2d");
             canvas.width = window.innerWidth;
@@ -248,6 +248,7 @@
 
             let raindrops = [];
             let obstacles = [];
+            let splashParticles = [];
 
             const gravity = 0.025;
             const bounciness = 0.6;
@@ -273,7 +274,29 @@
                     });
                 });
             }
+            class SplashParticle {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.vx = (Math.random() - 0.5) * 2;
+                    this.vy = (Math.random() - 0.5) * 2;
+                    this.size = Math.random() * 4 + 2;
+                    this.opacity = 1;
+                    this.color = color;
+                }
 
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.opacity -= 0.05;
+                    return this.opacity > 0;
+                }
+
+                draw(ctx) {
+                    ctx.fillStyle = this.color.replace(/, 1\)/, `, ${this.opacity})`);
+                    ctx.fillRect(this.x, this.y, this.size, this.size);
+                }
+            }
             class Raindrop {
                 constructor(x, y, speed) {
                     this.x = x;
@@ -300,7 +323,7 @@
 
                     if (!this.dodgesObstacles) {
                         obstacles.forEach(obstacle => {
-                            if (bounceEnabled &&!this.bouncing &&
+                            if (bounceEnabled && !this.bouncing &&
                                 this.greenValue >= 100 &&
                                 this.y + this.size >= obstacle.top &&
                                 this.y <= obstacle.bottom &&
@@ -321,6 +344,10 @@
                     this.bouncing = true;
                     this.vy *= -bounciness;
                     this.vx = (Math.random() - 0.5) * 4;
+
+                    for (let i = 0; i < 25; i++) {
+                        splashParticles.push(new SplashParticle(this.x, this.y, this.color));
+                    }
                 }
 
                 reset() {
@@ -342,7 +369,7 @@
                     }
                 }
 
-                draw() {
+                draw(ctx) {
                     ctx.font = `${this.size}px ${customFont}`;
                     ctx.fillStyle = this.color.replace(/, 1\)/, `, ${this.opacity})`);
                     ctx.fillText(this.char, this.x, this.y);
@@ -360,10 +387,15 @@
 
             function animateRain() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+
                 raindrops.forEach(drop => {
                     drop.fall();
-                    drop.draw();
+                    drop.draw(ctx);
                 });
+
+                splashParticles = splashParticles.filter(p => p.update());
+                splashParticles.forEach(p => p.draw(ctx));
+
                 requestAnimationFrame(animateRain);
             }
 
