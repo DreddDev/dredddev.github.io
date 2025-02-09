@@ -22,11 +22,11 @@
             font-family: 'DotGothic16', sans-serif;
         }
         canvas {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: auto;
             pointer-events: none;
             z-index: -1;
         }
@@ -280,6 +280,15 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = document.documentElement.scrollHeight;
+            }
+            window.addEventListener("load", resizeCanvas);
+            window.addEventListener("resize", resizeCanvas);
+            window.addEventListener("scroll", resizeCanvas);
+
+
             let raindrops = [];
             let obstacles = [];
             let splashParticles = [];
@@ -301,10 +310,10 @@
                 document.querySelectorAll(".obst").forEach(element => {
                     const rect = element.getBoundingClientRect();
                     obstacles.push({
-                        left: rect.left,
-                        right: rect.right,
-                        top: rect.top,
-                        bottom: rect.bottom
+                        left: rect.left + window.scrollX,
+                        right: rect.right + window.scrollX,
+                        top: rect.top + window.scrollY,
+                        bottom: rect.bottom + window.scrollY
                     });
                 });
             }
