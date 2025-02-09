@@ -200,185 +200,183 @@
     </div>
 
     <script>
-        let bounceEnabled = false;
         //Type effect
         window.onload = function () {
-        const textElement = document.querySelector(".introTitle");
-        const text = "Hey I'm Drew!";
-        let index = 0;
+            let bounceEnabled = false;
+            const textElement = document.querySelector(".introTitle");
+            const text = "Hey I'm Drew!";
+            let index = 0;
 
-        textElement.innerHTML = `<span id="typedText"></span><span id="cursor">_</span>`;
-        const typedText = document.getElementById("typedText");
-        const cursor = document.getElementById("cursor");
-        const contentElements = document.querySelectorAll(".pageContent");
+            textElement.innerHTML = `<span id="typedText"></span><span id="cursor">_</span>`;
+            const typedText = document.getElementById("typedText");
+            const cursor = document.getElementById("cursor");
+            const contentElements = document.querySelectorAll(".pageContent");
 
-        function typeEffect() {
-            if (index < text.length) {
-                typedText.innerHTML = text.substring(0, index + 1);
-                index++;
-                setTimeout(typeEffect, 100);
-            } else {
-                blinkCursor();
-                setTimeout(revealContent, 500);
+            function typeEffect() {
+                if (index < text.length) {
+                    typedText.innerHTML = text.substring(0, index + 1);
+                    index++;
+                    setTimeout(typeEffect, 100);
+                } else {
+                    blinkCursor();
+                    setTimeout(revealContent, 500);
+                }
             }
-        }
 
-        function blinkCursor() {
-            setInterval(() => {
-                cursor.style.visibility = cursor.style.visibility === "hidden" ? "visible" : "hidden";
-            }, 500);
-        }
+            function blinkCursor() {
+                setInterval(() => {
+                    cursor.style.visibility = cursor.style.visibility === "hidden" ? "visible" : "hidden";
+                }, 500);
+            }
 
-        function revealContent() {
-            bounceEnabled = true;
-            contentElements.forEach((element, i) => {
-                setTimeout(() => {
-                    element.classList.add("showContent");
-                }, i * 300);
-            });
-        }
-
-        typedText.innerHTML = "";
-        typeEffect();
-        };
-        //BG Canvas
-        const canvas = document.getElementById("backgroundCanvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let raindrops = [];
-        let obstacles = [];
-
-        const gravity = 0.025;
-        const bounciness = 0.6;
-        const fadeSpeed = 0.02;
-        const obstacleDodgeChance = 0.3;
-
-        const customFont = "'DotGothic16', sans-serif";
-        const japaneseChars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
-
-        function getRandomChar() {
-            return japaneseChars[Math.floor(Math.random() * japaneseChars.length)];
-        }
-
-        function getObstacles() {
-            obstacles = [];
-            document.querySelectorAll(".obst").forEach(element => {
-                const rect = element.getBoundingClientRect();
-                obstacles.push({
-                    left: rect.left,
-                    right: rect.right,
-                    top: rect.top,
-                    bottom: rect.bottom
+            function revealContent() {
+                bounceEnabled = true;
+                contentElements.forEach((element, i) => {
+                    setTimeout(() => {
+                        element.classList.add("showContent");
+                    }, i * 300);
                 });
-            });
-        }
-
-        class Raindrop {
-            constructor(x, y, speed) {
-                this.x = x;
-                this.y = y;
-                this.vx = (Math.random() - 0.5) * 2;
-                this.vy = speed;
-                this.char = getRandomChar();
-                this.size = Math.random() * 20 + 10;
-                this.greenValue = Math.floor(Math.random() * 255);
-                this.color = `rgba(0, ${this.greenValue}, 0, 1)`;
-                this.opacity = 1;
-                this.bouncing = false;
-                this.dodgesObstacles = Math.random() < obstacleDodgeChance;
             }
 
-            fall() {
-                this.vy += gravity;
-                this.y += this.vy;
-                this.x += this.vx;
+            typedText.innerHTML = "";
+            typeEffect();
 
-                if (this.y > canvas.height) {
-                    this.reset();
-                }
-
-                if (!this.dodgesObstacles) {
-                    obstacles.forEach(obstacle => {
-                        if (bounceEnabled &&!this.bouncing &&
-                            this.greenValue >= 100 &&
-                            this.y + this.size >= obstacle.top &&
-                            this.y <= obstacle.bottom &&
-                            this.x >= obstacle.left &&
-                            this.x <= obstacle.right) {
-                            this.bounce();
-                        }
-                    });
-                }
-
-                if (this.bouncing) {
-                    this.opacity -= fadeSpeed;
-                    if (this.opacity <= 0) this.remove();
-                }
-            }
-
-            bounce() {
-                this.bouncing = true;
-                this.vy *= -bounciness;
-                this.vx = (Math.random() - 0.5) * 4;
-            }
-
-            reset() {
-                this.size = Math.random() * 20 + 10;
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * -50;
-                this.vx = (Math.random() - 0.5) * 2;
-                this.vy = Math.random() * 2 + 1;
-                this.opacity = 1;
-                this.greenValue = Math.floor(Math.random() * 255);
-                this.color = `rgba(0, ${this.greenValue}, 0, 1)`;
-                this.bouncing = false;
-            }
-
-            remove() {
-                let index = raindrops.indexOf(this);
-                if (index > -1) {
-                    raindrops.splice(index, 1);
-                }
-            }
-
-            draw() {
-                ctx.font = `${this.size}px ${customFont}`;
-                ctx.fillStyle = this.color.replace(/, 1\)/, `, ${this.opacity})`);
-                ctx.fillText(this.char, this.x, this.y);
-            }
-        }
-
-        function spawnRaindrops() {
-            raindrops.push(new Raindrop(
-                Math.random() * canvas.width, 
-                Math.random() * -50, 
-                Math.random() * 2 + 1
-            ));
-            if (raindrops.length > 200) raindrops.splice(0, 25);
-        }
-
-        function animateRain() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            raindrops.forEach(drop => {
-                drop.fall();
-                drop.draw();
-            });
-            requestAnimationFrame(animateRain);
-        }
-
-        window.addEventListener("resize", () => {
+            const canvas = document.getElementById("backgroundCanvas");
+            const ctx = canvas.getContext("2d");
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+
+            let raindrops = [];
+            let obstacles = [];
+
+            const gravity = 0.025;
+            const bounciness = 0.6;
+            const fadeSpeed = 0.02;
+            const obstacleDodgeChance = 0.3;
+
+            const customFont = "'DotGothic16', sans-serif";
+            const japaneseChars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+
+            function getRandomChar() {
+                return japaneseChars[Math.floor(Math.random() * japaneseChars.length)];
+            }
+
+            function getObstacles() {
+                obstacles = [];
+                document.querySelectorAll(".obst").forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    obstacles.push({
+                        left: rect.left,
+                        right: rect.right,
+                        top: rect.top,
+                        bottom: rect.bottom
+                    });
+                });
+            }
+
+            class Raindrop {
+                constructor(x, y, speed) {
+                    this.x = x;
+                    this.y = y;
+                    this.vx = (Math.random() - 0.5) * 2;
+                    this.vy = speed;
+                    this.char = getRandomChar();
+                    this.size = Math.random() * 20 + 10;
+                    this.greenValue = Math.floor(Math.random() * 255);
+                    this.color = `rgba(0, ${this.greenValue}, 0, 1)`;
+                    this.opacity = 1;
+                    this.bouncing = false;
+                    this.dodgesObstacles = Math.random() < obstacleDodgeChance;
+                }
+
+                fall() {
+                    this.vy += gravity;
+                    this.y += this.vy;
+                    this.x += this.vx;
+
+                    if (this.y > canvas.height) {
+                        this.reset();
+                    }
+
+                    if (!this.dodgesObstacles) {
+                        obstacles.forEach(obstacle => {
+                            if (bounceEnabled &&!this.bouncing &&
+                                this.greenValue >= 100 &&
+                                this.y + this.size >= obstacle.top &&
+                                this.y <= obstacle.bottom &&
+                                this.x >= obstacle.left &&
+                                this.x <= obstacle.right) {
+                                this.bounce();
+                            }
+                        });
+                    }
+
+                    if (this.bouncing) {
+                        this.opacity -= fadeSpeed;
+                        if (this.opacity <= 0) this.remove();
+                    }
+                }
+
+                bounce() {
+                    this.bouncing = true;
+                    this.vy *= -bounciness;
+                    this.vx = (Math.random() - 0.5) * 4;
+                }
+
+                reset() {
+                    this.size = Math.random() * 20 + 10;
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * -50;
+                    this.vx = (Math.random() - 0.5) * 2;
+                    this.vy = Math.random() * 2 + 1;
+                    this.opacity = 1;
+                    this.greenValue = Math.floor(Math.random() * 255);
+                    this.color = `rgba(0, ${this.greenValue}, 0, 1)`;
+                    this.bouncing = false;
+                }
+
+                remove() {
+                    let index = raindrops.indexOf(this);
+                    if (index > -1) {
+                        raindrops.splice(index, 1);
+                    }
+                }
+
+                draw() {
+                    ctx.font = `${this.size}px ${customFont}`;
+                    ctx.fillStyle = this.color.replace(/, 1\)/, `, ${this.opacity})`);
+                    ctx.fillText(this.char, this.x, this.y);
+                }
+            }
+
+            function spawnRaindrops() {
+                raindrops.push(new Raindrop(
+                    Math.random() * canvas.width, 
+                    Math.random() * -50, 
+                    Math.random() * 2 + 1
+                ));
+                if (raindrops.length > 200) raindrops.splice(0, 25);
+            }
+
+            function animateRain() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                raindrops.forEach(drop => {
+                    drop.fall();
+                    drop.draw();
+                });
+                requestAnimationFrame(animateRain);
+            }
+
+            window.addEventListener("resize", () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                getObstacles();
+            });
+
             getObstacles();
-        });
-
-        getObstacles();
-        setInterval(spawnRaindrops, 50);
-        animateRain();
-
-        
+            setInterval(spawnRaindrops, 50);
+            animateRain();
+        };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b7c5d854c5.js" crossorigin="anonymous"></script>
