@@ -82,8 +82,15 @@
             font-size: 3em;
             margin-bottom: 25px;
         }
+        .pgContent {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .projects {
             text-align: center;
+            max-width: 500em;
         }
         h2.projects {
             font-family: 'Press Start 2P';
@@ -120,7 +127,6 @@
             font-size: 14px;
             text-align: left;
         }
-
         .pageContent {
             opacity: 0;
             transform: translateY(30px);
@@ -131,6 +137,11 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .pixelate-effect {
+        transition: transform 0.3s ease-out, filter 0.3s ease-out;
+        transform: scale(1.05);
+        filter: blur(2px) contrast(1.5);
+    }
     </style>
 </head>
 <body>
@@ -146,14 +157,14 @@
                 <i class="fa-brands fa-github fa-2x"></i>
             </div>
         </a>
-        <a href="https://x.com/GriggsDev">
-            <div class="socialBTN">
-                <i class="fa-brands fa-x-twitter fa-2x"></i>
-            </div>
-        </a>
         <a href="https://www.linkedin.com/in/drew-tavares-483922188/">
             <div class="socialBTN">
                 <i class="fa-brands fa-linkedin fa-2x"></i>
+            </div>
+        </a>
+        <a href="https://x.com/GriggsDev">
+            <div class="socialBTN">
+                <i class="fa-brands fa-x-twitter fa-2x"></i>
             </div>
         </a>
     </div>
@@ -165,7 +176,7 @@
     </div>
     <div class="pgContent pageContent">
         <section class="projects">
-            <h2 class="projects">Projects</h2>
+            <h2 class="projects">Games I've worked on</h2>
             <section class="pjctsDisplay">
                 <a href="https://drewtavares.itch.io/roost-runner">
                     <div class="PjctBox obst">
@@ -193,6 +204,20 @@
                         <img src="img/CyberElite.png" style="background-color: white; width: 315px; height: 250px;"/>
                         <h3 class="PjctBoxTitle">Cyber Elite</h3>
                         <p class="PjctBoxDesc">As Fred, a Cyber Elite mercenary, infiltrate a site overrun by rogue AI. Navigate hostile environments, hack terminals, and collect credit chips. Get in fast, get out faster. Good luck...</p>
+                    </div>
+                </a>
+                <a href="https://leo-funari.itch.io/jam-trammered">
+                    <div class="PjctBox obst">
+                        <img src="img/Trammered.png" style="background-color: white; width: 315px; height: 250px;"/>
+                        <h3 class="PjctBoxTitle">Trammered</h3>
+                        <p class="PjctBoxDesc">Find your way in this first-person alcohol-fueled  game jam project!</p>
+                    </div>
+                </a>
+                <a href="https://oliver-smith.itch.io/dish-dasher">
+                    <div class="PjctBox obst">
+                        <img src="img/DishDasher.png" style="background-color: white; width: 315px; height: 250px;"/>
+                        <h3 class="PjctBoxTitle">Dish Dasher</h3>
+                        <p class="PjctBoxDesc">Catch the plates falling from above to gain points & then throw them up and smash them all for bonus points!</p>
                     </div>
                 </a>
             </section>
