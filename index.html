@@ -1,174 +1,384 @@
-<!DOCTYPE HTML>
-<!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Drew Tavares</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/cursorBlink.gif" type="image/gif" >
+    <title>Optimized Rain Effect</title>
 
-		<!-- Header -->
-			<div id="header">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-				<div class="top">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <style>
+        body {
+            min-width: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            background: black;
+            color: white;
+            font-family: 'DotGothic16', sans-serif;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .Socials {
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+            width: 100px;
+            right: 0;
+            z-index: 1;
+        }
+        .socialBTN {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .fa-brands {
+            transition: .2s;
+        }
+        .fa-brands:hover {
+            color: green;
+            transform: scale(1.25);
+        }
+        .pgTop{
+            min-height: 30em;
+            position: relative;
+            text-align: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+        a {
+            color: inherit;
+            text-decoration: inherit;
+        }
+        h1 {
+            font-family: "Press Start 2P", serif;
+        }
+        h2 {
+            font-family: "Orbitron", serif;
+        }
+        .intro {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .introSubtitle{
+            font-size: 18px;
+        }
+        .introTitle {
+            font-size: 3em;
+            margin-bottom: 25px;
+        }
+        .projects {
+            text-align: center;
+        }
+        h2.projects {
+            font-family: 'Press Start 2P';
+            margin-bottom: 25px;
+        }
+        .pjctsDisplay{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .PjctBox {
+            display: block;
+            width: 315px;
+            height: 430px;
+            margin: 10px;
+            top: 10px;
+            transition: transform .2s, color .2s;
+        }
+        .PjctBox:hover {
+            transform: scale(1.05);
+            color: green;
+        }
+        .PjctBoxTitle {
+            text-align: left;
+            font-family: 'Press Start 2P';
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .PjctBoxDesc {
+            font-family: 'Orbitron';
+            font-size: 14px;
+            text-align: left;
+        }
 
-					<!-- Logo -->
-						<div id="logo">
-							<span class="image avatar48"><img src="images/avatar.png" alt="" /></span>
-							<h1 id="title">Drew Tavares</h1>
-							<p>Game Developer</p>
-						</div>
+        .pageContent {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
 
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
-								<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
-								<!--<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>-->
-							</ul>
-						</nav>
+        .showContent {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="backgroundCanvas"></canvas>
+    <div class="Socials">
+        <a href="https://drewtavares.itch.io/">
+            <div class="socialBTN">
+                <i class="fa-brands fa-itch-io fa-2x"></i>
+            </div>
+        </a>
+        <a href="https://github.com/GriggsGD">
+            <div class="socialBTN">
+                <i class="fa-brands fa-github fa-2x"></i>
+            </div>
+        </a>
+        <a href="https://x.com/GriggsDev">
+            <div class="socialBTN">
+                <i class="fa-brands fa-x-twitter fa-2x"></i>
+            </div>
+        </a>
+        <a href="https://www.linkedin.com/in/drew-tavares-483922188/">
+            <div class="socialBTN">
+                <i class="fa-brands fa-linkedin fa-2x"></i>
+            </div>
+        </a>
+    </div>
+    <div class="pgTop">
+        <section class="intro">
+            <h1 class="introTitle">Hey I'm Drew!</h1>
+            <h2 class="introSubtitle pageContent">I'm a game developer with expertise in Unity C# and Unreal C++, currently pursuing an MSc for AI in Games.</h2>
+        </section>
+    </div>
+    <div class="pgContent pageContent">
+        <section class="projects">
+            <h2 class="projects">Projects</h2>
+            <section class="pjctsDisplay">
+                <a href="https://drewtavares.itch.io/roost-runner">
+                    <div class="PjctBox obst">
+                        <img src="img/RoostRunner.png" style="background-color: white; width: 315px; height: 250px;"/>
+                        <h3 class="PjctBoxTitle">Roost Runner</h3>
+                        <p class="PjctBoxDesc">How long will you last running away from being eaten alive in this endless lair?</p>
+                    </div>
+                </a>
+                <a href="https://drewtavares.itch.io/untitledracinggame">
+                    <div class="PjctBox obst">
+                        <img src="img/UnRacingGame.png" style="background-color: white; width: 315px; height: 250px;"/>
+                        <h3 class="PjctBoxTitle">Untitled Racing Game</h3>
+                        <p class="PjctBoxDesc">Race the dumbots of unity standard assets while dodging wild cursed deers :)</p>
+                    </div>
+                </a>
+                <a href="https://drewtavares.itch.io/galactic-awakening">
+                    <div class="PjctBox obst">
+                        <img src="img/GalacticAwakening.png" style="background-color: white; width: 315px; height: 250px;"/>
+                        <h3 class="PjctBoxTitle">Galactic Awakening</h3>
+                        <p class="PjctBoxDesc">Discover cool upgrades, scavenge for parts, and repair your spaceship for an epic escape from a mysterious planet!</p>
+                    </div>
+                </a>
+                <a href="https://nyanzak.itch.io/cyber-elite">
+                    <div class="PjctBox obst">
+                        <img src="img/CyberElite.png" style="background-color: white; width: 315px; height: 250px;"/>
+                        <h3 class="PjctBoxTitle">Cyber Elite</h3>
+                        <p class="PjctBoxDesc">As Fred, a Cyber Elite mercenary, infiltrate a site overrun by rogue AI. Navigate hostile environments, hack terminals, and collect credit chips. Get in fast, get out faster. Good luck...</p>
+                    </div>
+                </a>
+            </section>
+        </section>
+    </div>
 
-				</div>
+    <script>
+        //Type effect
+        window.onload = function () {
+        const textElement = document.querySelector(".introTitle");
+        const text = "Hey I'm Drew!";
+        let index = 0;
 
-				<div class="bottom">
+        textElement.innerHTML = `<span id="typedText"></span><span id="cursor">_</span>`;
+        const typedText = document.getElementById("typedText");
+        const cursor = document.getElementById("cursor");
+        const contentElements = document.querySelectorAll(".pageContent");
 
-					<!-- Social Icons -->
-						<ul class="icons">
-							<li><a href="https://drewtavares.itch.io/" class="icon brands fa-itch-io"><span class="label">Itch.io</span></a></li>
-							<li><a href="https://github.com/GriggsGD" class="icon brands fa-github"><span class="label">Github</span></a></li>
-							<li><a href="https://twitter.com/GriggsDev" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="https://www.linkedin.com/in/drew-tavares-483922188/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						</ul>
+        function typeEffect() {
+            if (index < text.length) {
+                typedText.innerHTML = text.substring(0, index + 1);
+                index++;
+                setTimeout(typeEffect, 100);
+            } else {
+                blinkCursor();
+                setTimeout(revealContent, 500);
+            }
+        }
 
-				</div>
+        function blinkCursor() {
+            setInterval(() => {
+                cursor.style.visibility = cursor.style.visibility === "hidden" ? "visible" : "hidden";
+            }, 500);
+        }
 
-			</div>
+        function revealContent() {
+            contentElements.forEach((element, i) => {
+                setTimeout(() => {
+                    element.classList.add("showContent");
+                }, i * 300);
+            });
+        }
 
-		<!-- Main -->
-			<div id="main">
+        typedText.innerHTML = "";
+        typeEffect();
+        };
+        //BG Canvas
+        const canvas = document.getElementById("backgroundCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-				<!-- Intro -->
-					<section id="top" class="one dark cover">
-						<div class="container">
+        let raindrops = [];
+        let obstacles = [];
 
-							<header>
-								<h2 class="alt"><strong>Hey there! I'm Drew!</strong></h2>
-								<p>I am a recently graduated game developer who specialises in developing gameplay mechanics with the Unity Engine and C#.</p>
-							</header>
+        const gravity = 0.025;
+        const bounciness = 0.6;
+        const fadeSpeed = 0.02;
+        const obstacleDodgeChance = 0.3;
 
-						</div>
-					</section>
+        const customFont = "'DotGothic16', sans-serif";
+        const japaneseChars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
 
-				<!-- Portfolio -->
-					<section id="portfolio" class="two">
-						<div class="container">
+        function getRandomChar() {
+            return japaneseChars[Math.floor(Math.random() * japaneseChars.length)];
+        }
 
-							<header>
-								<h2>Portfolio</h2>
-							</header>
+        function getObstacles() {
+            obstacles = [];
+            document.querySelectorAll(".obst").forEach(element => {
+                const rect = element.getBoundingClientRect();
+                obstacles.push({
+                    left: rect.left,
+                    right: rect.right,
+                    top: rect.top,
+                    bottom: rect.bottom
+                });
+            });
+        }
 
-							<div class="row">
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a href="https://drewtavares.itch.io/roost-runner" class="image fit"><img src="images/RoostRunner - Cover Photo.png" alt="" /></a>
-										<header>
-											<h3>Roost Runner</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a href="https://drewtavares.itch.io/untitledracinggame" class="image fit"><img src="images/URG-Thumbnail.png" alt="" /></a>
-										<header>
-											<h3>Untitled Racing Game?</h3>
-										</header>
-									</article>
-								</div>
-								<div class="col-4 col-12-mobile">
-									<article class="item">
-										<a href="https://drewtavares.itch.io/galactic-awakening" class="image fit"><img src="images/GA-Thumbnail.png" alt="" /></a>
-										<header>
-											<h3>Galactic Awakening</h3>
-										</header>
-									</article>
-								</div>
-							</div>
+        class Raindrop {
+            constructor(x, y, speed) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = speed;
+                this.char = getRandomChar();
+                this.size = Math.random() * 20 + 10;
+                this.greenValue = Math.floor(Math.random() * 255);
+                this.color = `rgba(0, ${this.greenValue}, 0, 1)`;
+                this.opacity = 1;
+                this.bouncing = false;
+                this.dodgesObstacles = Math.random() < obstacleDodgeChance;
+            }
 
-						</div>
-						<br><a href="https://drewtavares.itch.io/" class="button">See More</a>
-					</section>
+            fall() {
+                this.vy += gravity;
+                this.y += this.vy;
+                this.x += this.vx;
 
-				<!-- About Me -->
-					<section id="about" class="three">
-						<div class="container">
+                if (this.y > canvas.height) {
+                    this.reset();
+                }
 
-							<header>
-								<h2>About Me</h2>
-							</header>
+                if (!this.dodgesObstacles) {
+                    obstacles.forEach(obstacle => {
+                        if (!this.bouncing &&
+                            this.greenValue >= 100 &&
+                            this.y + this.size >= obstacle.top &&
+                            this.y <= obstacle.bottom &&
+                            this.x >= obstacle.left &&
+                            this.x <= obstacle.right) {
+                            this.bounce();
+                        }
+                    });
+                }
 
-							<!--<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>-->
+                if (this.bouncing) {
+                    this.opacity -= fadeSpeed;
+                    if (this.opacity <= 0) this.remove();
+                }
+            }
 
-							<p>Recently I graduated from London South Bank University, where I attained a BA/BSc in Game Design and Development with first-class honours, I'm currently looking for a junior developer role in the game design industry to grow my skills and feed my passion for video games! Previously, during my studies, I have worked with an ex-Rockstar director, and a few other professionals and undergraduates, prototyping and developing gameplay mechanics for an unannounced game project!<br><br>I have skills with a handful of applications such as, Unity Engine, Visual Studio, SourceTree, Jira, BitBucket, GitHub, Blender, Maya, Adobe Creative Apps - Photoshop, Illustrator, Substance Painter & Designer, and Audition.</p>
+            bounce() {
+                this.bouncing = true;
+                this.vy *= -bounciness;
+                this.vx = (Math.random() - 0.5) * 4;
+            }
 
-						</div>
-					</section>
+            reset() {
+                this.size = Math.random() * 20 + 10;
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -50;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = Math.random() * 2 + 1;
+                this.opacity = 1;
+                this.greenValue = Math.floor(Math.random() * 255);
+                this.color = `rgba(0, ${this.greenValue}, 0, 1)`;
+                this.bouncing = false;
+            }
 
-				<!-- Contact -->
-					<!--<section id="contact" class="four">
-						<div class="container">
+            remove() {
+                let index = raindrops.indexOf(this);
+                if (index > -1) {
+                    raindrops.splice(index, 1);
+                }
+            }
 
-							<header>
-								<h2>Contact</h2>
-							</header>
+            draw() {
+                ctx.font = `${this.size}px ${customFont}`;
+                ctx.fillStyle = this.color.replace(/, 1\)/, `, ${this.opacity})`);
+                ctx.fillText(this.char, this.x, this.y);
+            }
+        }
 
-							<p>Elementum sem parturient nulla quam placerat viverra
-							mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
-							donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
-							orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+        function spawnRaindrops() {
+            raindrops.push(new Raindrop(
+                Math.random() * canvas.width, 
+                Math.random() * -50, 
+                Math.random() * 2 + 1
+            ));
+            if (raindrops.length > 200) raindrops.splice(0, 25);
+        }
 
-							<form method="post" action="#">
-								<div class="row">
-									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
-									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
-									<div class="col-12">
-										<textarea name="message" placeholder="Message"></textarea>
-									</div>
-									<div class="col-12">
-										<input type="submit" value="Send Message" />
-									</div>
-								</div>
-							</form>
+        function animateRain() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            raindrops.forEach(drop => {
+                drop.fall();
+                drop.draw();
+            });
+            requestAnimationFrame(animateRain);
+        }
 
-						</div>
-					</section>-->
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            getObstacles();
+        });
 
-			</div>
+        getObstacles();
+        setInterval(spawnRaindrops, 50);
+        animateRain();
 
-		<!-- Footer -->
-			<div id="footer">
-
-				<!-- Copyright -->
-					<ul class="copyright">
-						<li>&copy; Drew Tavares. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b7c5d854c5.js" crossorigin="anonymous"></script>
+</body>
 </html>
