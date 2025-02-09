@@ -200,6 +200,7 @@
     </div>
 
     <script>
+        let bounceEnabled = false;
         //Type effect
         window.onload = function () {
         const textElement = document.querySelector(".introTitle");
@@ -229,6 +230,7 @@
         }
 
         function revealContent() {
+            bounceEnabled = true;
             contentElements.forEach((element, i) => {
                 setTimeout(() => {
                     element.classList.add("showContent");
@@ -299,7 +301,7 @@
 
                 if (!this.dodgesObstacles) {
                     obstacles.forEach(obstacle => {
-                        if (!this.bouncing &&
+                        if (bounceEnabled &&!this.bouncing &&
                             this.greenValue >= 100 &&
                             this.y + this.size >= obstacle.top &&
                             this.y <= obstacle.bottom &&
