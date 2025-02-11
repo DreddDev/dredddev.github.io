@@ -19,7 +19,7 @@ window.onload = function () {
     textElement.innerHTML = `<span id="typedText"></span><span id="cursor">_</span>`;
     const typedText = document.getElementById("typedText");
     const cursor = document.getElementById("cursor");
-    const contentElements = document.querySelectorAll(".pageContent");
+    const contentElements = document.querySelectorAll(".introFade");
 
     function typeEffect() {
         if (index < text.length) {

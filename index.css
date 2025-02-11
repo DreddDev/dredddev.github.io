@@ -1,0 +1,178 @@
+body {
+    min-width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+    background: black;
+    color: white;
+    font-family: 'DotGothic16', sans-serif;
+}
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    pointer-events: none;
+    z-index: -1;
+}
+:is(h1, h2, h3, h4, h5, h6) {
+    font-family: "Press Start 2P", serif;
+}
+.Socials {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    width: 100px;
+    right: 0;
+    z-index: 1;
+}
+.portrait-mode .Socials {
+    width: 100%;
+    justify-content: space-evenly;
+    font-size: 1.25em;
+}
+.socialBTN {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+.fa-brands {
+    filter: drop-shadow(0px 0px 10px black);
+    transition: .2s;
+}
+.fa-brands:hover {
+    color: green;
+    transform: scale(1.25);
+    filter: drop-shadow(0px 0px 10px green);
+}
+.pgTop{
+    padding: 150px 0px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+.intro h1{
+    margin: 10px 50px;
+}
+.portrait-mode .intro h1{
+    font-size: 30px;
+}
+.intro h2{
+    font-family: "Orbitron", serif;
+    margin: 5px 50px;
+}
+.portrait-mode .intro h2{
+    font-size: 15px;
+}
+.intro {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.intro h2{
+    font-size: 18px;
+}
+.intro h1 {
+    font-size: 3em;
+    margin-bottom: 25px;
+}
+.pgContent {
+    width: 100%;
+    padding: 0px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pgVContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pgVContainer h2{
+    margin-bottom: 25px;
+}
+.portrait-mode .pgVContainer h2{
+    font-family: 'Press Start 2P';
+    font-size: 15px;
+}
+.gamesDisplay{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.gameDBox {
+    display: block;
+    width: 315px;
+    height: 430px;
+    margin: 10px;
+    top: 10px;
+    transition: transform .2s, color .2s, text-shadow .2s;
+}
+.portrait-mode .gameDBox {
+    width: 273px;
+    height: 372px;
+}
+.gameDBox img{
+    width: 315px;
+    height: 250px;
+}
+.portrait-mode .gameDBox img {
+    width: 273px;
+    height: 217px;
+}
+.gameDBox:hover {
+    transform: scale(1.05);
+    color: green;
+    text-shadow: 0px 0px 10px green;
+}
+.gameDBox h3 {
+    text-align: left;
+    font-family: 'Press Start 2P';
+    font-size: 16px;
+    margin-top: 10px;
+}
+.portrait-mode .gameDBox h3 {
+    text-align: left;
+    font-family: 'Press Start 2P';
+    font-size: 14px;
+    margin-top: 10px;
+}
+.gameDBox p {
+    font-family: 'Orbitron';
+    font-size: 14px;
+    text-align: left;
+}
+.portrait-mode .gameDBox p {
+    font-family: 'Orbitron';
+    font-size: 12px;
+    text-align: left;
+}
+
+.introFade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.showContent {
+    opacity: 1;
+    transform: translateY(0);
+}
+.pixelate-effect {
+transition: transform 0.3s ease-out, filter 0.3s ease-out;
+transform: scale(1.05);
+filter: blur(2px) contrast(1.5);
+}
