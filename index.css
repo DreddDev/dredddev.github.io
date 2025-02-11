@@ -190,6 +190,18 @@ a {
     margin: 10px 15px;
     height: 100%;
 }
+.techTXT h3{
+    font-size: 16px;
+}
+.techTXT p{
+    font-size: 14px;
+}
+.portrait-mode .techTXT h3{
+    font-size: 14px;
+}
+.portrait-mode .techTXT p{
+    font-size: 12px;
+}
 .portrait-mode .techTXT {
     text-align: center;
 }
