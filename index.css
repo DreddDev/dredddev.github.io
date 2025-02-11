@@ -209,6 +209,8 @@ filter: blur(2px) contrast(1.5);
 }
 .spacer {
     margin: 25px 0px;
+    width: 15%;
+    border-top: 1px solid white;
 }
 .wip {
     color: green;
