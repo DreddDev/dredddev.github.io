@@ -164,7 +164,7 @@ a {
 .techDBox {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     transition: transform .2s, color .2s, text-shadow .2s;
 }
 .techDBox:hover {
@@ -181,7 +181,9 @@ a {
 }
 .techTXT {
     text-align: left;
+    justify-content: flex-start;
     margin: 10px 15px;
+    height: 100%;
 }
 .portrait-mode .techTXT {
     text-align: center;
