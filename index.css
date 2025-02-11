@@ -108,8 +108,8 @@ a {
 }
 .gamesDisplay{
     display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
+    justify-content: space-around;
+    align-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
@@ -161,7 +161,31 @@ a {
     font-size: 12px;
     text-align: left;
 }
-
+.techDBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: transform .2s, color .2s, text-shadow .2s;
+}
+.techDBox:hover {
+    transform: scale(1.05);
+    color: green;
+    text-shadow: 0px 0px 10px green;
+}
+.portrait-mode .techDBox {
+    flex-direction: column;
+}
+.techDBox img {
+    width: 348px;
+    height: 261px;
+}
+.techTXT {
+    text-align: left;
+    margin: 10px 15px;
+}
+.portrait-mode .techTXT {
+    text-align: center;
+}
 .introFade {
     opacity: 0;
     transform: translateY(30px);
@@ -175,4 +199,7 @@ a {
 transition: transform 0.3s ease-out, filter 0.3s ease-out;
 transform: scale(1.05);
 filter: blur(2px) contrast(1.5);
+}
+.spacer {
+    margin: 25px 0px;
 }
