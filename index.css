@@ -112,11 +112,9 @@ a {
 }
 .gamesDisplay{
     display: flex;
-    justify-content: space-around;
-    align-content: flex-start;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
 }
 .gameDBox {
     display: block;
@@ -224,7 +222,15 @@ filter: blur(2px) contrast(1.5);
     width: 15%;
     border-top: 1px solid white;
 }
-.wip {
+/* .wip {
     color: green;
     text-shadow: 0px 0px 10px green;
+} */
+.txtLink {
+    color: green;
+    transition: .2s;
+}
+.txtLink:hover {
+    text-shadow: 0px 0px 10px green;
+    text-decoration: underline;
 }
