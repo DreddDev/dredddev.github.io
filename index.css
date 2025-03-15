@@ -105,6 +105,8 @@ a {
 }
 .pgVContainer h2{
     margin-bottom: 25px;
+    font-family: 'Press Start 2P';
+    font-size: 17px;
 }
 .portrait-mode .pgVContainer h2{
     font-family: 'Press Start 2P';
