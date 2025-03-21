@@ -207,6 +207,7 @@ a {
 }
 .companyDBox img{
     width: 250px;
+    margin: 25px;
     transition: .2s;
 }
 .companyDBox:hover img{
