@@ -165,6 +165,9 @@ a {
     font-size: 12px;
     text-align: left;
 }
+.techDisplay {
+    max-width: 1300px;
+}
 .techDBox {
     display: flex;
     flex-direction: row;
@@ -184,25 +187,52 @@ a {
     width: 348px;
     height: 261px;
 }
-.techTXT {
+.techTXTL {
     text-align: left;
     justify-content: flex-start;
     margin: 10px 15px;
     height: 100%;
 }
-.techTXT h3{
+.techTXTL h3{
     font-size: 16px;
 }
-.techTXT p{
+.techTXTL p{
     font-size: 14px;
 }
-.portrait-mode .techTXT h3{
+.portrait-mode .techTXTL h3{
     font-size: 14px;
 }
-.portrait-mode .techTXT p{
+.portrait-mode .techTXTL p{
     font-size: 12px;
 }
-.portrait-mode .techTXT {
+.portrait-mode .techTXTL {
+    text-align: center;
+}
+
+.techTXTR {
+    text-align: right;
+    justify-content: flex-start;
+    margin: 10px 15px;
+    height: 100%;
+}
+
+.techTXTR h3 {
+    font-size: 16px;
+}
+
+.techTXTR p {
+    font-size: 14px;
+}
+
+.portrait-mode .techTXTR h3 {
+    font-size: 14px;
+}
+
+.portrait-mode .techTXTR p {
+    font-size: 12px;
+}
+
+.portrait-mode .techTXTR {
     text-align: center;
 }
 .companyDBox img{
