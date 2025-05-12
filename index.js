@@ -13,7 +13,7 @@ window.onload = function () {
     //Type effect
     let bounceEnabled = false;
     const textElement = document.querySelector(".introTitle");
-    const text = "Hey, I'm Drew!";
+    const text = "Hey, I'm Griggs!";
     let index = 0;
 
     textElement.innerHTML = `<span id="typedText"></span><span id="cursor">_</span>`;
