@@ -10,7 +10,6 @@ window.onload = function () {
         }
     }
     adjustLayout();
-    //Type effect
     let bounceEnabled = false;
     const textElement = document.querySelector(".introTitle");
     const text = "Hey, I'm Griggs!";
