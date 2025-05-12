@@ -12,7 +12,7 @@ window.onload = function () {
     adjustLayout();
     let bounceEnabled = false;
     const textElement = document.querySelector(".introTitle");
-    const text = "Hey, I'm Griggs!";
+    const text = textElement ? textElement.textContent : "";
     let index = 0;
 
     textElement.innerHTML = `<span id="typedText"></span><span id="cursor">_</span>`;
