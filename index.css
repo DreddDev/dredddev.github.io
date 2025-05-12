@@ -132,11 +132,9 @@ a {
 }
 .gameDBox img{
     width: 315px;
-    height: 250px;
 }
 .portrait-mode .gameDBox img {
     width: 273px;
-    height: 217px;
 }
 .gameDBox:hover {
     transform: scale(1.05);
