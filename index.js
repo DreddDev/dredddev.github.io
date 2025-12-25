@@ -48,6 +48,118 @@ window.onload = function () {
 
     typedText.innerHTML = "";
     typeEffect();
+    //Overlay
+    const overlay = document.getElementById("projectOverlay");
+    const overlayImage = document.getElementById("overlayImage");
+    const overlayTitle = document.getElementById("overlayTitle");
+    const overlayDescription = document.getElementById("overlayDescription");
+    const overlayLink = document.getElementById("overlayLink");
+    const closeBtn = document.querySelector(".close-btn");
+    const floatingImg = document.getElementById("floatingImage");
+
+    let lastClickedCard = null;
+    let isAnimating = false;
+
+
+    document.querySelectorAll(".gameDBox").forEach(card => {
+        card.addEventListener("click", () => {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            lastClickedCard = card;
+
+            const img = card.querySelector("img");
+            const rect = img.getBoundingClientRect();
+
+            // Populate overlay content
+            overlayImage.src = img.src;
+            overlayTitle.textContent = card.querySelector("h3").textContent;
+            overlayDescription.textContent = card.querySelector("p").textContent;
+            overlayLink.href = card.dataset.link;
+
+            // FIRST — match card image position
+            floatingImg.src = img.src;
+            floatingImg.style.top = `${rect.top}px`;
+            floatingImg.style.left = `${rect.left}px`;
+            floatingImg.style.width = `${rect.width}px`;
+            floatingImg.style.height = `${rect.height}px`;
+            floatingImg.classList.remove("hidden");
+
+            img.style.visibility = "hidden";
+
+            overlay.classList.remove("hidden");
+            document.body.classList.add("overlay-open");
+            document.body.style.overflow = "hidden";
+
+            // LAST — animate to overlay image
+            requestAnimationFrame(() => {
+                const targetRect = document
+                    .querySelector(".overlay-image-wrapper")
+                    .getBoundingClientRect();
+
+                floatingImg.style.top = `${targetRect.top}px`;
+                floatingImg.style.left = `${targetRect.left}px`;
+                floatingImg.style.width = `${targetRect.width}px`;
+                floatingImg.style.height = `${targetRect.height}px`;
+
+                floatingImg.addEventListener("transitionend", () => {
+                    floatingImg.classList.add("hidden");
+                    overlayImage.style.visibility = "visible";
+                    isAnimating = false;
+                }, { once: true });
+            });
+        });
+    });
+
+
+    function closeOverlay() {
+        if (!lastClickedCard || isAnimating) return;
+        isAnimating = true;
+
+        const originalImg = lastClickedCard.querySelector("img");
+
+        const startRect = document
+            .querySelector(".overlay-image-wrapper")
+            .getBoundingClientRect();
+        const endRect = originalImg.getBoundingClientRect();
+
+        floatingImg.src = overlayImage.src;
+        floatingImg.style.top = `${startRect.top}px`;
+        floatingImg.style.left = `${startRect.left}px`;
+        floatingImg.style.width = `${startRect.width}px`;
+        floatingImg.style.height = `${startRect.height}px`;
+        floatingImg.classList.remove("hidden");
+
+        overlayImage.style.visibility = "hidden";
+        overlay.classList.add("hidden");
+        document.body.classList.remove("overlay-open");
+        document.body.style.overflow = "";
+
+        requestAnimationFrame(() => {
+            floatingImg.style.top = `${endRect.top}px`;
+            floatingImg.style.left = `${endRect.left}px`;
+            floatingImg.style.width = `${endRect.width}px`;
+            floatingImg.style.height = `${endRect.height}px`;
+
+            floatingImg.addEventListener("transitionend", () => {
+                floatingImg.classList.add("hidden");
+                originalImg.style.visibility = "visible";
+                isAnimating = false;
+            }, { once: true });
+        });
+    }
+
+
+    closeBtn.addEventListener("click", closeOverlay);
+    overlay.addEventListener("click", e => {
+        if (e.target === overlay) closeOverlay();
+    });
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closeOverlay();
+    });
+
+
     //BG Effect
     const canvas = document.getElementById("backgroundCanvas");
     const ctx = canvas.getContext("2d");

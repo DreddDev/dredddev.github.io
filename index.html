@@ -68,54 +68,44 @@
         <section class="pgVContainer">
             <h2>Projects I've worked on</h2>
             <div class="gamesDisplay">
-                <a href="https://gourav-ranganath.itch.io/gallos-kernow">
-                    <div class="gameDBox">
-                        <img src="img/GallosKernow.png" class="obst"/>
-                        <h3>Gallos Kernow</h3>
-                        <p>Resilience through play — a game for Cornwall Council teaching kids key life skills! Developed in a uni group project.</p>
-                    </div>
-                </a>
-                <a href="https://dredddev.itch.io/galactic-awakening">
-                    <div class="gameDBox">
-                        <img src="img/GalacticAwakening.png" class="obst"/>
-                        <h3>Galactic Awakening</h3>
-                        <p>Discover cool upgrades, scavenge for parts, and repair your spaceship for an epic escape from a mysterious planet!</p>
-                    </div>
-                </a>
-                <a href="https://dredddev.itch.io/untitledracinggame">
-                    <div class="gameDBox">
-                        <img src="img/UnRacingGame.png" class="obst"/>
-                        <h3>Untitled Racing Game</h3>
-                        <p>Race the dumbots of unity standard assets while dodging wild cursed deers :)</p>
-                    </div>
-                </a>
-                <a href="https://dredddev.itch.io/roost-runner">
-                    <div class="gameDBox">
-                        <img src="img/RoostRunner.png" class="obst"/>
-                        <h3>Roost Runner</h3>
-                        <p>How long will you last running away from being eaten alive in this endless lair?</p>
-                    </div>
-                </a>
-                <a href="https://leo-funari.itch.io/jam-trammered">
-                    <div class="gameDBox">
-                        <img src="img/Trammered.png" class="obst"/>
-                        <h3>Trammered</h3>
-                        <p>Find your way in this first-person alcohol-fueled game jam project!</p>
-                    </div>
-                </a>
-                <a href="https://oliver-smith.itch.io/dish-dasher">
-                    <div class="gameDBox">
-                        <img src="img/DishDasher.png" class="obst"/>
-                        <h3>Dish Dasher</h3>
-                        <p>Catch the plates falling from above to gain points & then throw them up and smash them all for bonus points!</p>
-                    </div>
-                <a href="https://nyanzak.itch.io/cyber-elite">
-                    <div class="gameDBox">
-                        <img src="img/CyberElite.png" class="obst"/>
-                        <h3>Cyber Elite</h3>
-                        <p>As Fred, a Cyber Elite mercenary, infiltrate a site overrun by rogue AI. Navigate hostile environments, hack terminals, and collect credit chips. Get in fast, get out faster. Good luck...</p>
-                    </div>
-                </a>
+                <div class="gameDBox" data-link="https://gourav-ranganath.itch.io/gallos-kernow">
+                    <img src="img/GallosKernow.png" class="obst" />
+                    <h3>Gallos Kernow</h3>
+                    <p>Resilience through play — a game for Cornwall Council teaching kids key life skills! Developed in a uni group
+                        project.</p>
+                </div>
+                <div class="gameDBox" data-link="https://dredddev.itch.io/galactic-awakening">
+                    <img src="img/GalacticAwakening.png" class="obst" />
+                    <h3>Galactic Awakening</h3>
+                    <p>Discover cool upgrades, scavenge for parts, and repair your spaceship for an epic escape from a mysterious
+                        planet!</p>
+                </div>
+                <div class="gameDBox" data-link="https://dredddev.itch.io/untitledracinggame">
+                    <img src="img/UnRacingGame.png" class="obst" />
+                    <h3>Untitled Racing Game</h3>
+                    <p>Race the dumbots of unity standard assets while dodging wild cursed deers :)</p>
+                </div>
+                <div class="gameDBox" data-link="https://dredddev.itch.io/roost-runner">
+                    <img src="img/RoostRunner.png" class="obst" />
+                    <h3>Roost Runner</h3>
+                    <p>How long will you last running away from being eaten alive in this endless lair?</p>
+                </div>
+                <div class="gameDBox" data-link="https://leo-funari.itch.io/jam-trammered">
+                    <img src="img/Trammered.png" class="obst" />
+                    <h3>Trammered</h3>
+                    <p>Find your way in this first-person alcohol-fueled game jam project!</p>
+                </div>
+                <div class="gameDBox" data-link="https://oliver-smith.itch.io/dish-dasher">
+                    <img src="img/DishDasher.png" class="obst" />
+                    <h3>Dish Dasher</h3>
+                    <p>Catch the plates falling from above to gain points & then throw them up and smash them all for bonus points!</p>
+                </div>
+                <div class="gameDBox" data-link="https://nyanzak.itch.io/cyber-elite">
+                    <img src="img/CyberElite.png" class="obst" />
+                    <h3>Cyber Elite</h3>
+                    <p>As Fred, a Cyber Elite mercenary, infiltrate a site overrun by rogue AI. Navigate hostile environments, hack
+                        terminals, and collect credit chips. Get in fast, get out faster. Good luck...</p>
+                </div>
             </div>
         </section>
 
@@ -203,6 +193,19 @@
 
     <p class="copyright">© 2025 - Drew Tavares. All rights reserved.</p>
     
+    <div id="projectOverlay" class="overlay hidden">
+        <div class="overlay-content">
+            <button class="close-btn">✕</button>
+            <div class="overlay-image-wrapper">
+                <img id="overlayImage" />
+            </div>
+            <h2 id="overlayTitle"></h2>
+            <p id="overlayDescription"></p>
+            <a id="overlayLink" target="_blank">View Project</a>
+        </div>
+    </div>
+    <img id="floatingImage" class="floating-image hidden" />
+
 <!-- Scripts -->
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

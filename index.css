@@ -332,3 +332,84 @@ filter: blur(2px) contrast(1.5);
     text-shadow: 0px 0px 10px green;
     text-decoration: underline;
 }
+
+/* Overlay backdrop */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+/* Hide by default */
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Expanded card */
+.overlay-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.overlay:not(.hidden) .overlay-content {
+    opacity: 1;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+body.overlay-open *:not(#projectOverlay) {
+    pointer-events: none;
+}
+
+.floating-image {
+    position: fixed;
+    z-index: 1000;
+    object-fit: contain;
+    transition:
+        transform 0.45s cubic-bezier(.22, .61, .36, 1),
+        width 0.45s cubic-bezier(.22, .61, .36, 1),
+        height 0.45s cubic-bezier(.22, .61, .36, 1),
+        top 0.45s cubic-bezier(.22, .61, .36, 1),
+        left 0.45s cubic-bezier(.22, .61, .36, 1);
+}
+
+.floating-image.hidden {
+    display: none;
+}
+#overlayImage {
+    visibility: hidden;
+}
+.overlay-image-wrapper {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
