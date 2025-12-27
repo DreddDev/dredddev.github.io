@@ -373,6 +373,7 @@ filter: blur(2px) contrast(1.5);
     top: 20px;
     right: 30px;
     font-size: 24px;
+    font-weight: normal;
     background: none;
     border: none;
     color: white;
@@ -381,9 +382,10 @@ filter: blur(2px) contrast(1.5);
     transition: transform .2s, color .2s, text-shadow .2s;
 }
 .close-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.2);
     color: green;
     text-shadow: 0px 0px 10px green;
+    font-weight: bold;
 }
 body.overlay-open #mainContent {
     pointer-events: none;
