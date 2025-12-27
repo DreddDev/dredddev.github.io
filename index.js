@@ -1,3 +1,4 @@
+const testText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nam efficitur egestas lacus vel aliquam.Praesent elementum aliquam est non lobortis.Integer scelerisque fermentum augue vitae volutpat.Mauris leo lorem, faucibus eget metus et, scelerisque volutpat nulla.Vestibulum posuere quam quis est molestie pretium.Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Vestibulum id semper sapien.Praesent in sagittis lorem. Quisque nec ante ullamcorper, egestas enim sed, sagittis nunc.Curabitur sit amet lectus maximus, blandit urna sit amet, vehicula orci.Aliquam ut lorem viverra, bibendum tortor a, auctor urna.Donec eu justo augue.Vestibulum quis tristique metus.Ut sit amet ex in nibh varius pulvinar.Nulla sed tempus dui.Donec vitae aliquet neque.Aenean dolor urna, aliquet eget convallis eget, pretium eget orci.Sed aliquet erat mauris, in gravida dolor tincidunt id.Ut facilisis arcu sit amet arcu tincidunt commodo.Fusce imperdiet turpis nec pellentesque placerat.Mauris metus turpis, tempus at tempor in, imperdiet id dui.Mauris vehicula, dolor sed tempus maximus, nibh ex feugiat mi, ut fermentum ligula ligula eleifend sem. In hac habitasse platea dictumst.Vivamus ultricies aliquet est, sed iaculis est sollicitudin pellentesque.Suspendisse viverra urna nec velit congue, eu dignissim eros feugiat.Sed blandit sodales scelerisque.Phasellus vitae erat massa.Proin ac velit auctor, commodo sapien eget, porttitor urna.Morbi sagittis libero risus.Ut pretium auctor tempor.Sed eget arcu dolor.Curabitur tristique dignissim odio, sit amet molestie quam viverra nec.Praesent gravida augue dictum nisi mattis faucibus.Morbi quis tempor erat. Vestibulum vel luctus magna.Mauris vitae suscipit magna.Donec ut ante sem.Morbi nulla lectus, aliquam sed cursus vitae, viverra nec dolor.Curabitur et dapibus leo.In aliquet et ante molestie dapibus.Nunc at sapien nisi.Mauris tincidunt bibendum suscipit.Aliquam lorem arcu, pulvinar vel ex ac, fringilla semper ex.Etiam sollicitudin accumsan elit a gravida.Proin tincidunt tristique elit sed commodo.Nullam venenatis vitae est id commodo.Aenean ultricies metus eget vulputate tincidunt.Sed et ligula luctus, cursus arcu at, feugiat ante.In viverra mauris sit amet lorem pulvinar, id dictum purus euismod.Aenean ante enim, faucibus ut lacus id, dictum dignissim nibh.Fusce tortor mauris, accumsan id vehicula eu, vulputate ac neque.Vivamus nec massa lorem.Pellentesque ultricies sagittis porta.Sed fermentum leo consequat dapibus porta.Suspendisse dignissim tellus porta congue ullamcorper.Phasellus a vulputate leo.Maecenas posuere diam nec condimentum ornare.Nullam pellentesque posuere auctor.Nam semper est nec libero pulvinar, id dictum ex ullamcorper.Ut pulvinar convallis mauris, in dictum enim.Curabitur non dictum enim, id lacinia leo.Ut imperdiet arcu vehicula ante iaculis semper.Nulla scelerisque velit nec cursus tincidunt.Nulla facilisis tellus ut cursus aliquam.Nam arcu enim, ultrices id sodales vel, faucibus quis odio.Sed nisi nulla, cursus at ipsum nec, scelerisque euismod eros.Sed eros nunc, semper eget velit non, porta placerat sem.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Donec in pulvinar nisl.Ut volutpat tellus at massa interdum congue.Pellentesque diam ligula, tristique non ex eget, scelerisque tincidunt tellus.Curabitur mattis eget turpis et cursus.Integer suscipit ante nisl, et pharetra ipsum lobortis sit amet.Aenean laoreet libero ligula, tristique consectetur est luctus in.Proin varius vitae metus vel cursus.Praesent vehicula tincidunt pulvinar.Morbi leo orci, consequat et mi in, iaculis sollicitudin mi.Aliquam ullamcorper erat ut aliquet tincidunt.Praesent sit amet felis orci.Morbi fermentum ornare nisl, at ultrices quam suscipit ut.Cras maximus nulla nec condimentum mollis.Sed mattis ut lorem nec pharetra.Vestibulum euismod metus sed purus egestas, ut cursus nisi commodo.Etiam dignissim commodo nunc vitae accumsan.In finibus eleifend nunc vitae condimentum.Nulla ultricies ornare odio sit amet imperdiet.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Praesent sit amet cursus nisl.Donec sagittis velit at dolor lobortis venenatis.Vivamus sodales viverra urna.Proin molestie dignissim pharetra.Praesent elementum elementum fringilla.Sed dictum, velit nec hendrerit varius, ligula nisi dictum elit, sit amet semper dui dolor at quam.Nulla orci nisi, tincidunt dictum enim et, scelerisque finibus nunc.Sed commodo ut neque vel lobortis.Quisque ac ullamcorper nunc.Nunc accumsan lectus nec tortor feugiat molestie eu ut felis.Mauris in arcu a neque tristique posuere gravida quis quam.In enim est, sollicitudin eget ligula id, malesuada bibendum leo.Donec mattis odio ut nulla laoreet, quis bibendum leo blandit.Morbi tristique velit vel nisi porta, ac feugiat arcu blandit.Etiam id sem augue.Nullam venenatis finibus turpis, eget lobortis lorem faucibus ac.Morbi sed condimentum lacus.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec imperdiet, nisl nec vestibulum lacinia, tellus ante dapibus erat, egestas lobortis est mauris at turpis.Aliquam nec urna lacinia, pulvinar turpis vitae, mattis lectus.Donec gravida ipsum egestas enim imperdiet, eu pellentesque augue tempor.Donec eu nunc sagittis, volutpat eros ac, interdum nisi.In hac habitasse platea dictumst.Pellentesque facilisis dolor at urna sagittis convallis.Morbi tempus dui in sem hendrerit, vitae vulputate dui facilisis.Vivamus cursus odio a nulla tempus, ut vehicula sapien sagittis.Cras eu arcu enim.Morbi blandit turpis porta tellus efficitur, quis consequat ligula ultricies.Nunc laoreet ipsum vel commodo tincidunt.Integer ante turpis, vulputate auctor augue fringilla, tempus blandit eros.Nullam sodales turpis ut velit luctus, eget mollis lectus condimentum.Aenean ullamcorper ligula ultrices elit vulputate luctus ut at odio.Curabitur pharetra elementum lectus, tincidunt consequat elit pretium sed.Aenean at ex ac diam tristique hendrerit ut non turpis.Pellentesque vulputate enim dui, ac fringilla quam convallis nec.Phasellus vestibulum, urna quis aliquam ultricies, lacus neque laoreet libero, vel ultricies arcu dui at diam.Morbi eget magna quis ex imperdiet volutpat.Nullam erat risus, efficitur et blandit ut, ornare quis tortor.Aenean vel varius diam.Nulla euismod, lorem ut dignissim porta, tortor mi malesuada tortor, eu fringilla libero urna vitae lorem.Nunc ac magna sed sapien tincidunt luctus.Pellentesque bibendum viverra nibh non congue.Fusce dictum imperdiet faucibus.Nulla tortor ligula, pretium nec magna in, dignissim finibus erat.Vestibulum ut odio eu eros molestie auctor.Phasellus euismod hendrerit nunc.";
 window.onload = function () {
 
     function adjustLayout() {
@@ -74,7 +75,7 @@ window.onload = function () {
             // Populate overlay content
             overlayImage.src = img.src;
             overlayTitle.textContent = card.querySelector("h3").textContent;
-            overlayDescription.textContent = card.querySelector("p").textContent;
+            overlayDescription.textContent = testText;//card.querySelector("p").textContent;
             overlayLink.href = card.dataset.link;
 
             // FIRST — match card image position
@@ -92,9 +93,13 @@ window.onload = function () {
             document.body.style.overflow = "hidden";
 
             // LAST — animate to overlay image
+            overlayImage.style.visibility = "hidden";
+            overlay.classList.remove("hidden");
+
             requestAnimationFrame(() => {
                 const targetRect = document
                     .querySelector(".overlay-image-wrapper")
+                    .querySelector("#overlayImage")
                     .getBoundingClientRect();
 
                 floatingImg.style.top = `${targetRect.top}px`;
@@ -119,7 +124,7 @@ window.onload = function () {
         const originalImg = lastClickedCard.querySelector("img");
 
         const startRect = document
-            .querySelector(".overlay-image-wrapper")
+            .querySelector(".overlay-image-wrapper img")
             .getBoundingClientRect();
         const endRect = originalImg.getBoundingClientRect();
 
@@ -151,10 +156,6 @@ window.onload = function () {
 
 
     closeBtn.addEventListener("click", closeOverlay);
-    overlay.addEventListener("click", e => {
-        if (e.target === overlay) closeOverlay();
-    });
-
     document.addEventListener("keydown", e => {
         if (e.key === "Escape") closeOverlay();
     });
