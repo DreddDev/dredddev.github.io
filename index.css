@@ -415,7 +415,7 @@ body.overlay-open #mainContent {
     align-items: flex-start;
     justify-content: center;
     object-fit: contain;
-    object-position: top center;
+    object-position: center top;
 }
 
 .overlay-layout {
@@ -454,6 +454,8 @@ body.overlay-open #mainContent {
     }
     .overlay-image-wrapper {
         height: 40vh;
+        object-position: center;
+        justify-content: center;
     }
     .overlay-text {
         text-align: center;
