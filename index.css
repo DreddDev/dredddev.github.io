@@ -420,7 +420,7 @@ body.overlay-open #mainContent {
 
 .overlay-layout {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: auto 2fr;
     margin-top: 0px;
     align-self: flex-start;
     gap: 30px;
@@ -428,7 +428,6 @@ body.overlay-open #mainContent {
     height: 100%;
     
 }
-/* RIGHT: text column */
 .overlay-text {
     display: flex;
     flex-direction: column;
@@ -436,32 +435,33 @@ body.overlay-open #mainContent {
     min-height: 0;
 }
 
-/* Scrollable blog section */
-.overlay-blog {
+.portrait-mode .overlay-blog {
     flex: 1;
     overflow-y: auto;
     padding-right: 10px;
     margin: 20px 0;
 }
-@media (max-width: 900px) {
-    .overlay-layout {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-    }
-    .overlay-content { 
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    .overlay-image-wrapper {
-        height: 40vh;
-        object-position: center;
-        justify-content: center;
-    }
-    .overlay-text {
-        text-align: center;
-    }
-    .overlay-blog {
-        max-height: none;
-        overflow: visible;
-    }
+.portrait-mode .overlay-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+.portrait-mode .overlay-content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.portrait-mode .overlay-image-wrapper {
+    height: 100%;
+    object-position: center;
+    justify-content: center;
+}
+
+.portrait-mode .overlay-text {
+    text-align: center;
+}
+
+.portrait-mode .overlay-blog {
+    max-height: none;
+    overflow: visible;
 }
