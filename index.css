@@ -330,3 +330,6 @@ filter: blur(2px) contrast(1.5);
     text-shadow: 0px 0px 10px green;
     text-decoration: underline;
 }
+.artModelVP {
+    height: 500px;
+}
