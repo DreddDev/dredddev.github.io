@@ -151,20 +151,10 @@
 
         <section class="pgVContainer">
             <h2>Art Assets</h2>
-            <div class="sketchfab-embed-wrapper"> <iframe title="Kaspa" frameborder="0" allowfullscreen
-                    mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
-                    xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640"
-                    height="480"
-                    src="https://sketchfab.com/models/5f2848cfee0b45fa926102c423367f4d/embed?autospin=1&autostart=1&transparent=1&ui_theme=dark">
-                </iframe>
-                <p style="font-size: 13px; font-weight: normal; margin: 5px; color: white;"> <a
-                        href="https://sketchfab.com/3d-models/kaspa-5f2848cfee0b45fa926102c423367f4d?utm_medium=embed&utm_campaign=share-popup&utm_content=5f2848cfee0b45fa926102c423367f4d"
-                        target="_blank" rel="nofollow" style="font-weight: bold; color: green;"> Kaspa </a> by <a
-                        href="https://sketchfab.com/DreddieT?utm_medium=embed&utm_campaign=share-popup&utm_content=5f2848cfee0b45fa926102c423367f4d"
-                        target="_blank" rel="nofollow" style="font-weight: bold; color: green;"> DreddieT </a> on <a
-                        href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=5f2848cfee0b45fa926102c423367f4d"
-                        target="_blank" rel="nofollow" style="font-weight: bold; color: green;">Sketchfab</a></p>
-            </div>
+            <model-viewer
+                src="mdl/Kaspa.glb"
+                poster="shared-assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls
+                touch-action="pan-y"></model-viewer>
         </section>
 
         <span class="spacer"></span>
@@ -228,5 +218,6 @@
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b7c5d854c5.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </body>
 </html>
