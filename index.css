@@ -20,8 +20,18 @@ canvas {
 :is(h1, h2, h3, h4, h5, h6) {
     font-family: "Press Start 2P", serif;
 }
+h1{
+    font-size: 25px;
+}
+h2{
+    font-size: 20px;
+}
+h3{
+    font-size: 17px;
+}
 p {
     font-family: "Orbitron", serif; 
+    font-size: 12px;
 }
 .Socials {
     position: fixed;
@@ -149,12 +159,7 @@ a {
 }
 .pgVContainer h2{
     margin-bottom: 25px;
-    font-family: 'Press Start 2P';
     font-size: 17px;
-}
-.portrait-mode .pgVContainer h2{
-    font-family: 'Press Start 2P';
-    font-size: 15px;
 }
 .gamesDisplay{
     display: flex;
