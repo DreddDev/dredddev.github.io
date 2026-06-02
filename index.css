@@ -332,7 +332,7 @@ filter: blur(2px) contrast(1.5);
     text-decoration: underline;
 }
 .artModelVP {
-    width: 75vw;
+    width: 500px;
     height: 500px;
 }
 
@@ -362,7 +362,6 @@ filter: blur(2px) contrast(1.5);
     content: '';
     position: absolute;
     inset: 0;
-    /* background: radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, 0.75) 100%); */
     pointer-events: none;
     z-index: 1;
 }
