@@ -477,6 +477,11 @@ filter: blur(2px) contrast(1.5);
     margin: 0;
 }
 
+.project-blog-para {
+    display: block;
+    margin: 10px 0;
+}
+
 .crt-screen::-webkit-scrollbar { width: 4px; }
 .crt-screen::-webkit-scrollbar-track { background: rgba(0, 255, 0, 0.05); }
 .crt-screen::-webkit-scrollbar-thumb { background: rgba(0, 255, 0, 0.35); }
