@@ -232,4 +232,127 @@ window.onload = function () {
     getObstacles();
     setInterval(spawnRaindrops, 50);
     animateRain();
+
+    // ===== CRT Overlay =====
+    let touchStartY = 0;
+
+    function onTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+    }
+
+    function preventBgScroll(e) {
+        const scrollable = e.target.closest('.crt-screen');
+        if (!scrollable) {
+            e.preventDefault();
+            return;
+        }
+        const dy = e.touches[0].clientY - touchStartY;
+        const atTop = scrollable.scrollTop === 0;
+        const atBottom = scrollable.scrollTop + scrollable.clientHeight >= scrollable.scrollHeight - 1;
+        if ((dy > 0 && atTop) || (dy < 0 && atBottom)) e.preventDefault();
+    }
+    const crtOverlay = document.getElementById('crtOverlay');
+    const crtClose = document.getElementById('crtClose');
+    const crtProjectImg = document.getElementById('crtProjectImg');
+    const crtProjectTitle = document.getElementById('crtProjectTitle');
+    const crtProjectTags = document.getElementById('crtProjectTags');
+    const crtProjectDesc = document.getElementById('crtProjectDesc');
+    const crtProjectLink = document.getElementById('crtProjectLink');
+
+    function openCRTOverlay(link, clickX, clickY) {
+        const card = link.querySelector('.gameDBox, .techDBox');
+        if (!card) return;
+
+        const img = card.querySelector('img');
+        const h3 = card.querySelector('h3');
+        const p = card.querySelector('p');
+
+        crtProjectImg.src = img ? img.getAttribute('src') : '';
+        crtProjectImg.style.display = img ? '' : 'none';
+        crtProjectTitle.textContent = h3 ? h3.textContent : '';
+        crtProjectDesc.textContent = p ? p.textContent : '';
+        crtProjectLink.href = link.href;
+
+        crtProjectTags.innerHTML = '';
+        [link.dataset.role, link.dataset.tech, link.dataset.year]
+            .filter(Boolean)
+            .forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'crt-tag';
+                span.textContent = tag;
+                crtProjectTags.appendChild(span);
+            });
+
+        const blogSrc = link.dataset.blogId
+            ? document.querySelector(`.project-blog[data-for="${link.dataset.blogId}"]`)
+            : null;
+        const blogDest = document.getElementById('crtBlogContent');
+        if (blogSrc && blogSrc.innerHTML.trim()) {
+            blogDest.innerHTML = blogSrc.innerHTML;
+            blogDest.style.display = '';
+        } else {
+            blogDest.innerHTML = '';
+            blogDest.style.display = 'none';
+        }
+
+        // Anchor the expansion to the exact click position
+        crtOverlay.style.transformOrigin = `${clickX}px ${clickY}px`;
+
+        document.body.classList.add('overlay-open');
+        document.body.style.overflow = 'hidden';
+        document.addEventListener('touchstart', onTouchStart, { passive: true });
+        document.addEventListener('touchmove', preventBgScroll, { passive: false });
+        crtOverlay.style.display = 'flex';
+        void crtOverlay.offsetHeight; // Force reflow so display:flex is committed before animation starts
+        crtOverlay.classList.remove('closing', 'open');
+        crtOverlay.classList.add('opening');
+
+        setTimeout(() => {
+            crtOverlay.style.transform = 'none'; // clear so overlay is fully visible
+            crtOverlay.classList.remove('opening');
+            crtOverlay.classList.add('open');
+            const display = crtOverlay.querySelector('.crt-project-display');
+            setTimeout(() => {
+                display.style.opacity = '1';
+                display.style.transform = 'translateY(0)';
+            }, 50);
+        }, 580);
+    }
+
+    function closeCRTOverlay() {
+        if (!crtOverlay.classList.contains('open') && !crtOverlay.classList.contains('opening')) return;
+        document.activeElement?.blur();
+        const display = crtOverlay.querySelector('.crt-project-display');
+        display.style.opacity = '0';
+        display.style.transform = 'translateY(8px)';
+        crtOverlay.style.transform = ''; // let the closing animation control transform
+        crtOverlay.classList.remove('open', 'opening');
+        crtOverlay.classList.add('closing');
+
+        setTimeout(() => {
+            crtOverlay.classList.remove('closing');
+            crtOverlay.style.display = 'none';
+            document.body.classList.remove('overlay-open');
+            document.body.style.overflow = '';
+            document.removeEventListener('touchstart', onTouchStart);
+            document.removeEventListener('touchmove', preventBgScroll);
+        }, 400);
+    }
+
+    document.querySelectorAll('.project-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            openCRTOverlay(this, e.clientX, e.clientY);
+        });
+    });
+
+    crtClose.addEventListener('click', closeCRTOverlay);
+
+    crtOverlay.addEventListener('click', function (e) {
+        if (e.target === crtOverlay) closeCRTOverlay();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeCRTOverlay();
+    });
 };
