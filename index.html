@@ -324,7 +324,38 @@
         <!-- Write Speedometer UI blog content here -->
     </div>
     <div class="project-blog" data-for="boxing-ml-agent" hidden>
-        <!-- Write Boxing ML Agent blog content here -->
+        <h3 class="crt-blog-heading">// OVERVIEW</h3>
+        <p class="project-blog-para">A technical research project for the Machine Learning module (COMP714) of my AI for Games Master's at Falmouth
+        University. The aim was to investigate whether a reinforcement learning (RL) agent could learn to play a boxing game in
+        real time against a finite state machine (FSM) driven opponent. I built it in Unreal Engine 5 using the Learning Agents
+        plugin, training an agent to perceive game state — location, stamina, enemy position, health and targeting — and learn
+        effective combat behaviour from it.</p>
+
+        <h3 class="crt-blog-heading">// DEV LOG</h3>
+        <p class="project-blog-para">The agent was built in UE5's Blueprints with control over movement, look direction, attack and lock-on (I removed
+        jumping early on, as it served no purpose in boxing and only complicated the action space). The core of the project was
+        reward shaping, carried out across three experiments, each trained for 2+ hours with episodes fixed at 500 steps.</p>
+        <p class="project-blog-para">Run one used a generous reward setup and produced an agent that punched almost constantly, burned through stamina, and
+        rarely scored — yet still returned high rewards, a clear sign they weren't reflecting good behaviour. Run two tightened
+        the structure and added signals for staying in range and conserving stamina, giving slightly smarter play but still
+        inflated returns. Run three stripped back the passive rewards so the agent had to earn its return through genuine combat
+        rather than simply surviving.</p>
+
+        <h3 class="crt-blog-heading">// RESULTS</h3>
+        <p class="project-blog-para">Run three produced a clear improvement, with the agent consistently landing one to two kills per episode by the end of
+        training. Peak average returns reflected the tuning — roughly 640 and 710 in the first two runs against a lower but
+        harder-won ~250 in the third, where negative returns drove continued learning. The agent never reliably beat the FSM bot
+        and kept some bad habits (occasional air-punching, wasted stamina), but the experiments clearly showed that reward
+        shaping directly and predictably influenced both behaviour and training stability.</p>
+
+        <h3 class="crt-blog-heading">// CHALLENGES & LEARNINGS</h3>
+        <p class="project-blog-para">Most of the friction came from Unreal's runtime quirks: Blueprints losing references after editor restarts (fixed by
+        manually reconnecting nodes), the FSM NPC occasionally failing its state transitions, and the player spawning at the
+        world origin and being destroyed in inference mode (fixed with an explicit default spawn location). The biggest takeaway
+        was how sensitive RL is to the reward function — minor changes produced large, sometimes counter-intuitive shifts, and
+        getting returns to actually reflect performance was as much of the challenge as the combat itself. The project met its
+        goal of applying ML in a real gameplay scenario, and demonstrated both the potential and the practical limits of
+        reinforcement learning in UE5.</p>
     </div>
 
 <!-- CRT Overlay -->
