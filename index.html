@@ -321,7 +321,29 @@
         range of systems early on gave me a strong, hands-on grounding across the full stack that I've continued to build on.</p>
     </div>
     <div class="project-blog" data-for="speedometer-ui" hidden>
-        <!-- Write Speedometer UI blog content here -->
+        <h3 class="crt-blog-heading">// OVERVIEW</h3>
+        <p class="project-blog-para">A UI speedometer built for my racing game during the year one 3D Level Design module of my Bachelor's. It was my first
+        proper piece of work with Unity's UI system, and I designed the dial elements myself in Photoshop. The speedometer reads
+        its target vehicle's velocity in real time and displays it through both an analogue needle and a digital centre readout,
+        with a game version adding dash warning lights for braking and slipping.</p>
+
+        <h3 class="crt-blog-heading">// DEV LOG</h3>
+        <p class="project-blog-para">The core of the system is a controller that reads the velocity from the target car's rigidbody, converts it to a chosen
+        unit (MPH or KPH), and drives the display from there. The needle rotates by mapping the current speed to an angle
+        between a set minimum and maximum, clamping at the top end so it never overshoots past the dial.</p>
+        <p class="project-blog-para">The speed labels around the dial are generated procedurally based on the target car's top speed, so the markings always
+        match whatever vehicle the speedometer is attached to rather than being hard-coded. Each label is spaced evenly around
+        the dial by the same normalised angle calculation that drives the needle. I also added a digital centre display showing
+        the live speed and unit, using an image mask so the needle reads cleanly over the top of it.</p>
+        <p class="project-blog-para">I later wrote up the whole build as a step-by-step tutorial and published it on GitHub, covering the UI setup, the
+        controller script, and the procedural labels.</p>
+
+        <h3 class="crt-blog-heading">// CHALLENGES & LEARNINGS</h3>
+        <p class="project-blog-para">As my first time working with Unity's UI system, a lot of the learning came from understanding how the canvas actually
+        renders — UI elements draw in hierarchy order, so my procedurally spawned labels initially appeared on top of the
+        needle. Setting the needle as the last sibling after generating the labels fixed it, and it gave me an early, practical
+        grasp of how Unity's UI layering, Rect Transforms and pivots fit together — knowledge I've relied on in every project
+        since.</p>
     </div>
     <div class="project-blog" data-for="boxing-ml-agent" hidden>
         <h3 class="crt-blog-heading">// OVERVIEW</h3>
