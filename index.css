@@ -306,13 +306,13 @@ a {
     transform: translateY(0);
 }
 .pixelate-effect {
-transition: transform 0.3s ease-out, filter 0.3s ease-out;
-transform: scale(1.05);
-filter: blur(2px) contrast(1.5);
+    transition: transform 0.3s ease-out, filter 0.3s ease-out;
+    transform: scale(1.05);
+    filter: blur(2px) contrast(1.5);
 }
 .spacer {
-    margin: 25px 0px;
-    width: 15%;
+    margin: 75px 0px;
+    width: 10%;
     border-top: 1px solid white;
 }
 .horiLine {
